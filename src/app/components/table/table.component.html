@@ -1,0 +1,34 @@
+<section class="w-full h-full flex flex-col items-center justify-center">
+  <table
+    *ngIf="canShow; else tableEmpty"
+    class="text-center border-collapse border border-slate-400"
+  >
+    <thead>
+      <tr>
+        <th [ngClass]="classes">Nome</th>
+        <th [ngClass]="classes">Quantidade (Uni)</th>
+        <th [ngClass]="classes">Preço (R$)</th>
+        <th [ngClass]="classes">Preço de Venda R$</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="show">
+        <td [ngClass]="classes">{{ row.name }}</td>
+        <td [ngClass]="classes">{{ row.quantity }}</td>
+        <td [ngClass]="classes">R$ {{ row.price }}</td>
+        <td [ngClass]="classes">R$ {{ row.sellPrice }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #tableEmpty>
+    <div>
+      <p>Tabela está vazia</p>
+    </div>
+  </ng-template>
+  <button
+    (click)="showRow()"
+    class="border-2 shadow-lg rounded-xl hover:bg-black hover:text-white hover:shadow-2xl transition-all p-4 px-6 my-8"
+  >
+    Mostrar linhas
+  </button>
+</section>
